@@ -9,7 +9,7 @@ export default function Home() {
   if(error){
     return (    <div className={styles.container}>
       <h1>Error</h1>
-      {JSON.stringify(error)}
+      {error}
     </div>)
   }
   if(isLoading){
@@ -17,7 +17,6 @@ export default function Home() {
       <h1>Please wait...</h1>
     </div>)
   }
-console.log(data)
   return (
     <div className={styles.container}>
       <Head>
@@ -27,9 +26,14 @@ console.log(data)
       </Head>
 
       <main className={styles.main}>
-          <h1>{data.name}</h1>
+          <h1>{data!.name}</h1>
           <p>
-              <Image src={data.sprites.front_default} alt={"image of pokemon"}/>
+              <Image
+                  src={data!.sprites.front_default}
+                  alt="image of pokemon"
+                  width={200}
+                  height={200}
+              />
           </p>
       </main>
 
